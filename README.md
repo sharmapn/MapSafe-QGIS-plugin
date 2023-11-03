@@ -1,0 +1,1 @@
+# MapSafe-QGIS-plugin
