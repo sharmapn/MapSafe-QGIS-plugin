@@ -11,7 +11,7 @@ functions (geomasking or hexabinning, encryption, and notarization), along with 
 features, using their desktop application by themselves, eliminating reliance
 on a third party for dataset protection. 
 
-The plugins safeguardinga dn verification features are demonstrated in a 5-minute
+The plugins safeguarding and verification features are demonstrated in a 5-minute
 YouTube video (https://www.youtube.com/watch?v=gq4wX3kMTfE) and on the online
 help menu at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/
 
