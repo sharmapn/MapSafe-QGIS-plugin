@@ -25,7 +25,8 @@ D:\QGIS>pip install python-dotenv
 D:\QGIS>pip install xkcdpass
 D:\QGIS>pip install easygui or python -m pip install easygui
 D:\QGIS>pip install python-dotenv
-D:\QGIS>(python -m) pip install pyqt-switch'''
+D:\QGIS>(python -m) pip install pyqt-switch
+'''
 
 
 Full details are at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/gettingstarted.html
