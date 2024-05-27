@@ -1,4 +1,4 @@
-MapSafe qgis geoprivacy plugin
+MapSafe QGIS Geoprivacy plugin
 ================
 
 
@@ -9,7 +9,9 @@ sharing, and verifying geospatial datsets from within the familiar QGIS
 desktop application. Data owners can perform multiple geospatial data safeguarding
 functions (geomasking or hexabinning, encryption, and notarization), along with verification
 features, using their desktop application by themselves, eliminating reliance
-on a third party for dataset protection. These features are demonstrated in a 5-minute
+on a third party for dataset protection. 
+
+The plugins safeguardinga dn verification features are demonstrated in a 5-minute
 YouTube video (https://www.youtube.com/watch?v=gq4wX3kMTfE) and on the online
 help menu at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/
 
