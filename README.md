@@ -13,4 +13,6 @@ on a third party for dataset protection. These features are demonstrated in a 5-
 YouTube video (https://www.youtube.com/watch?v=gq4wX3kMTfE) and on the online
 help menu at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/
 
+Getting started details are at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/gettingstarted.html
+
 Plugin version 1.0 and above can only be used in QGIS version 3. 
