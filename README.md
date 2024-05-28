@@ -14,7 +14,7 @@ Please click on video image.
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/gq4wX3kMTfE/0.jpg)](https://www.youtube.com/watch?v=gq4wX3kMTfE)
 
-The help menu is online at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/
+Each detail of the safeguarding and verification process is detailed in the help menu at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/
 
 
 **Getting started** 
