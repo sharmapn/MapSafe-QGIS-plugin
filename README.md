@@ -21,9 +21,8 @@ The help menu is online at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/
 
 Installing Python and the required libraries
 
-Python can be installed on the machine. The The Windows installer is at https://www.python.org/downloads/windows/
-
-1. The required Python libraries can be installed via pip. To use pip in a Windows environment, one needs to run the OSGeo4W.bat from the 'D:\QGIS' directory (not from 'D\OSGEO4W').
+1. Python can be installed using installer is at https://www.python.org/downloads/
+    The required Python libraries can be installed via pip. To use pip in a Windows environment, one needs to run the OSGeo4W.bat from the 'D:\QGIS' directory (not from 'D\OSGEO4W').
 
 These commands need to be issued using the D:\QGIS\OSGEO.bat
 ```D:\QGIS>pip install cryptography
