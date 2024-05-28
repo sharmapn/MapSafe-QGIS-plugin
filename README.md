@@ -20,8 +20,11 @@ The help menu is online at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/
 **Getting started** 
 
 Installing Python and the required libraries
+
 Python can be installed on the machine. The The Windows installer is at https://www.python.org/downloads/windows/
-The required Python libraries can be installed via pip. To use pip in a Windows environment, one needs to run the OSGeo4W.bat from the 'D:\QGIS' directory (not from 'D\OSGEO4W').
+
+1. The required Python libraries can be installed via pip. To use pip in a Windows environment, one needs to run the OSGeo4W.bat from the 'D:\QGIS' directory (not from 'D\OSGEO4W').
+
 These commands need to be issued using the D:\QGIS\OSGEO.bat
 ```D:\QGIS>pip install cryptography
 D:\QGIS>pip install web3
@@ -32,7 +35,13 @@ D:\QGIS>pip install python-dotenv
 D:\QGIS>(python -m) pip install pyqt-switch
 ```
 
-
+2. Download the plugin zip file from the  https://github.com/sharmapn/MapSafe-QGIS-plugin
+3. Install plugin in QGIS
+4. There should be an .env file in the installed plugin directory (a sample one is attached).
+    You should change the parameters (especially the Working Directory) in this file directly by editing it. 
+    In my machine, it was C:\Users/Dainyarnava/AppData/Roaming/QGIS/QGIS3\profiles\default/python/plugins\mapsafe/.env
+    Or you can change it from the "Set ENV values" button from the plugin's top right.
+    
 Full details are at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/gettingstarted.html
 
 Plugin version 1.0 and above can only be used in QGIS version 3. 
