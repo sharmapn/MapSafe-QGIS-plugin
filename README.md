@@ -15,7 +15,7 @@ The plugins safeguarding and verification features are demonstrated in a 5-minut
 YouTube video (https://www.youtube.com/watch?v=gq4wX3kMTfE) and on the online
 help menu at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/
 
-Getting started 
+**Getting started** 
 
 Installing Python and the required libraries
 Python can be installed on the machine. The The Windows installer is at https://www.python.org/downloads/windows/
