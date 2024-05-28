@@ -1,4 +1,4 @@
-MapSafe QGIS Geoprivacy plugin
+**MapSafe QGIS Geoprivacy plugin**
 ================
 
 
