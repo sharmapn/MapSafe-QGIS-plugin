@@ -129,8 +129,8 @@ class Notarisation:
 
         # 3. Create variables
         account_from = {
-            'private_key': self.PRIVATE_KEY, #'452e08e795100c60f9dc60b52f119c5e293e8de4858fc0bd985efaa3bc857dcd',
-            'address':     self.BLOCKCHAIN_ADDRESS, #'0x244EAbEf05ACF009746Ce91fE1712Daf3857e620',
+            'private_key': self.PRIVATE_KEY,
+            'address':     self.BLOCKCHAIN_ADDRESS,
         }
         # contract address will always be this constant address
         contract_address = '0x8dD5Ca941A9F839062b6589A2E3f701458B011A9'
