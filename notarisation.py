@@ -1,18 +1,9 @@
 # 1. Add imports
-#from compile import abi
 from web3 import Web3
-#from web3 import Web3, HTTPProvider
 import json
-
 import os
-
-# loading parameters from env file
-from dotenv import load_dotenv
-load_dotenv()
 from pathlib import Path
-
 from PyQt5.QtWidgets import QMessageBox
-
 # import env variable class
 from .envvariables import envvariables
 
@@ -29,57 +20,20 @@ class Notarisation:
 
     transaction_hash   = '' 
 
-    def __init__(self, plugin_dir, envvar): #, working_directory):
-        # 2. Add the Web3 provider logic here: 
-        # https://eth-goerli.g.alchemy.com/v2/demo
-        #node_url = "https://rpc.ankr.com/eth_goerli"  # Goerli endpoint URL # https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161
-        # Goerli no longer working, so we use sepolia
-        node_url = "https://rpc.ankr.com/eth_sepolia"  # Goerli endpoint URL # https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161
-        self.web3 = Web3(Web3.HTTPProvider(node_url))  # Change to correct network
+    def __init__(self, plugin_dir, envvar): 
 
         # https://ethereum.stackexchange.com/questions/46706/web3-py-how-to-use-abi-in-python-when-solc-doesnt-work
         filename = os.path.join(plugin_dir, 'abis/Location.json')
         with open(filename) as f:
             LocationNFT = json.load(f)
-        self.abi = LocationNFT["abi"]
-        #LocationNFT = require('./abis/Location.json')
-
-        #Notarisation env files
-        # load variable from env file         #load_dotenv()
-        # https://dev.to/jakewitcher/using-env-files-for-environment-variables-in-python-applications-55a1
-        #env_file_loc = os.path.join(working_directory, '.env')
-        #print('PPPP working_directory: ' + str(working_directory))
-        #dotenv_path = Path(env_file_loc) #'C:\\dataset\\.env')
-
-        #get the location of the env file from the internal file
-        #env_file_loc = read_env_file_location()
-
-        # previous line
-        #dotenv_path = Path('D:\\datasets\\.env')
-        ##dotenv_path = Path(env_file_loc)
-        # new line 
-        # self.internal_file_loc = f'{self.plugin_dir}/loc.txt'  
-        # print('self.internal_file_loc: ' + self.internal_file_loc)
-
-        # the location of the env file is within the internal file
-        # we simply read the location from the internal file and then pass that location to this function
-        # f = open(self.internal_file_loc, "r") # In this example, we will be opening a file to read-only.
-        # env_file_loc = f.readline()        
-        # f.close()  # closing the file
-        # print('env_file_loc: ' + env_file_loc)
-        # load_dotenv(env_file_loc) #"D:\\datasets\\.env")
-        # #dotenv_path = Path(env_file_loc)
-
-        #print('PPPP dotenv_path: ' + str(dotenv_path))
-        # previous line
-        #load_dotenv(dotenv_path=dotenv_path)
-        #load_dotenv()
+        self.abi = LocationNFT["abi"]               
         
-        self.PRIVATE_KEY = envvar.get_private_key() #os.getenv('PRIVATE_KEY')
-        self.BLOCKCHAIN_ADDRESS = envvar.get_blockchain_address()#os.getenv('BLOCKCHAIN_ADDRESS')
-        self.CONTRACT_ADDRESS = envvar.get_contract_address()#os.getenv('CONTRACT_ADDRESS')    
-        self.NODE_URL = envvar.get_node_url()  #os.getenv('NODE_URL') 
-        #self.working_directory = os.getenv["WORKING_DIR"]
+        self.PRIVATE_KEY = envvar.get_private_key() 
+        self.BLOCKCHAIN_ADDRESS = envvar.get_blockchain_address()
+        self.CONTRACT_ADDRESS = envvar.get_contract_address()    
+        self.NODE_URL = envvar.get_node_url()      
+         # 2. Add the Web3 provider logic here: 
+        self.web3 = Web3(Web3.HTTPProvider(node_url))  # Change to correct network   
 
         print('ENV Variables read from file ') 
         print('self.BLOCKCHAIN_ADDRESS: '   + str(self.BLOCKCHAIN_ADDRESS))
@@ -87,12 +41,11 @@ class Notarisation:
         print('self.NODE_URL: '             + str(self.NODE_URL))
         print('self.PRIVATE_KEY: '          + str(self.PRIVATE_KEY))
 
-        # have to check this
+        # have to make this check
         # note the init function is only called when notarisation is invoked from the notarisation tab
         self.check_env_variables()
 
     def check_env_variables(self):
-
         error = False
 
         try:
@@ -129,8 +82,8 @@ class Notarisation:
 
         # 3. Create variables
         account_from = {
-            'private_key': self.PRIVATE_KEY,
-            'address':     self.BLOCKCHAIN_ADDRESS,
+            'private_key': self.PRIVATE_KEY, 
+            'address':     self.BLOCKCHAIN_ADDRESS, 
         }
         # contract address will always be this constant address
         contract_address = '0x8dD5Ca941A9F839062b6589A2E3f701458B011A9'
@@ -163,18 +116,14 @@ class Notarisation:
 
             self.transaction_hash = tx_receipt.transactionHash.hex()
 
-            print(f"Tx successful with hash: { tx_receipt.transactionHash.hex() }")
-            #To run the script, you can enter the following command in your terminal:
-
+            print(f"Tx successful with hash: { tx_receipt.transactionHash.hex() }")            
             return True #success
 
         except Exception as e:
-            #print("Notarisation unsucessfull.")
             print(f"Notarisation unsuccessful - {e}")
-            #QMessageBox.information(None, "DEBUG:", 'Notarisation unsucessfull 2. ') 
+            QMessageBox.information(None, "DEBUG:", 'Notarisation unsucessfull 2. ') 
 
-            return False # failure
-        
+            return False # failure        
 
     def getTransaction(self):
         return self.transaction_hash
