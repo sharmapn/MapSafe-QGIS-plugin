@@ -36,6 +36,9 @@ load_dotenv()
 import dotenv
 from os import environ
 
+# just for the env window 
+from PyQt5 import QtCore as qtc
+
 # open window to save env variables
 #from mapsafe_dialog import MapSafeDialog
 
@@ -45,6 +48,9 @@ FORM_CLASS, _ = uic.loadUiType(os.path.join(
 ###################################
 
 class envvariables(QtWidgets.QDialog, FORM_CLASS):
+  
+  # for the envariables window to get and show the 'working directory' in the main window
+  submitClicked = qtc.pyqtSignal(str)  # <-- This is the sub window's signal
 
   internal_envfile_loc = None
 
@@ -63,56 +69,14 @@ class envvariables(QtWidgets.QDialog, FORM_CLASS):
     self.setupUi(self)
     print('Set Variables')
     self.setWindowTitle("Set Variables")
-    # self.pushButton.setText("Grettings")
     self.btc_save.clicked.connect(self.save_env_variables)
 
-    # previous line
-    #dotenv_path = Path('D:\\datasets\\.env')
-    ##dotenv_path = Path(env_file_loc)
-    # new line 
     self.plugin_dir = os.path.dirname(__file__)
     self.internal_envfile_loc = f'{self.plugin_dir}/.env'  
     print('self.internal_envfile_loc: ' + self.internal_envfile_loc)
 
-    # the location of the env file is within the internal file
-    # we simply read the location from the internal file and then pass that location to this function
-    # f = open(self.internal_envfile_loc, "r") # In this example, we will be opening a file to read-only.
-    # env_file_loc = f.readline()        
-    # f.close()  # closing the file
-    # print('env_file_loc: ' + env_file_loc)
-    
-
-    #print('PPPP dotenv_path: ' + str(dotenv_path))
-    # previous line
-    #load_dotenv(dotenv_path=dotenv_path)
-    #load_dotenv()
-    
-    # self.PRIVATE_KEY = os.getenv('PRIVATE_KEY')
-    # self.BLOCKCHAIN_ADDRESS = os.getenv('BLOCKCHAIN_ADDRESS')
-    # self.CONTRACT_ADDRESS = os.getenv('CONTRACT_ADDRESS')    
-    # self.NODE_URL = os.getenv('NODE_URL') 
-    # self.WORKING_DIR = environ['WORKING_DIR']
-
-    # print('ENV Variables read from file ') 
-    # print('self.BLOCKCHAIN_ADDRESS: '   + str(self.BLOCKCHAIN_ADDRESS))
-    # print('self.CONTRACT_ADDRESS: '     + str(self.CONTRACT_ADDRESS))
-    # print('self.NODE_URL: '             + str(self.NODE_URL))
-    # print('self.PRIVATE_KEY: '          + str(self.PRIVATE_KEY))
-    # print('self.WORKING_DIR: '          + str(self.WORKING_DIR))
-
-    # self.txt_blockchain_addr.setPlainText(str(self.BLOCKCHAIN_ADDRESS)) 
-    # self.txt_contract_addr.setPlainText(str(self.CONTRACT_ADDRESS)) 
-    # self.txt_node_url.setPlainText(str(self.NODE_URL)) 
-    # self.txt_private_key.setPlainText(str(self.PRIVATE_KEY)) 
-    # self.txt_working_dir.setPlainText(str(self.WORKING_DIR)) 
-
     self.read_env_variables()
-    #load_dotenv(self.internal_envfile_loc) #"D:\\datasets\\.env")
-    #dotenv_path = Path(env_file_loc)
-
-    # have to check this
-    # note the init function is only called when notarisation is invoked from the notarisation tab
-    #self.check_env_variables()
+       
 
   def read_env_variables(self):
       print('read_env_variables(): ')
@@ -120,8 +84,6 @@ class envvariables(QtWidgets.QDialog, FORM_CLASS):
       self.internal_envfile_loc = f'{self.plugin_dir}/.env'  
       print('self.internal_envfile_loc: ' + self.internal_envfile_loc)
       
-      #load_dotenv(self.internal_envfile_loc) 
-
       try:   
         # Check if the .env file exists
         if not os.path.isfile(self.internal_envfile_loc):
@@ -161,19 +123,10 @@ class envvariables(QtWidgets.QDialog, FORM_CLASS):
           print(f'Exception checking environment variables. Please check + {e}')
           #QMessageBox.information(None, "DEBUG:", 'Exception checking environment variables. ') 
            
-    #   self.PRIVATE_KEY = os.getenv('PRIVATE_KEY')
-    #   self.BLOCKCHAIN_ADDRESS = os.getenv('BLOCKCHAIN_ADDRESS')
-    #   self.CONTRACT_ADDRESS = os.getenv('CONTRACT_ADDRESS')    
-    #   self.NODE_URL = os.getenv('NODE_URL') 
-    #   self.WORKING_DIR = environ['WORKING_DIR']
-
   def save_env_variables(self):
       
       self.plugin_dir = os.path.dirname(__file__)
-      self.internal_envfile_loc = f'{self.plugin_dir}/.env'  
-      #print('self.internal_envfile_loc: ' + self.internal_envfile_loc)      
-      #load_dotenv(self.internal_envfile_loc) 
-
+      self.internal_envfile_loc = f'{self.plugin_dir}/.env'        
       error = False
 
       self.BLOCKCHAIN_ADDRESS = self.txt_blockchain_addr.toPlainText() 
@@ -206,22 +159,19 @@ class envvariables(QtWidgets.QDialog, FORM_CLASS):
               print("WORKING_DIR must be set.")
               QMessageBox.information(None, "DEBUG:", 'WORKING_DIR must be set. ')
           else:
-            #   dotenv.set_key(self.internal_envfile_loc, 'WORKING_DIR', self.WORKING_DIR )
-            #   dotenv.set_key(self.internal_envfile_loc, 'PRIVATE_KEY', self.PRIVATE_KEY )
-            #   dotenv.set_key(self.internal_envfile_loc, 'BLOCKCHAIN_ADDRESS', self.BLOCKCHAIN_ADDRESS )
-            #   dotenv.set_key(self.internal_envfile_loc, 'CONTRACT_ADDRESS', self.CONTRACT_ADDRESS )
-            #   dotenv.set_key(self.internal_envfile_loc, 'NODE_URL', self.NODE_URL )
-             
+                         
               # modify the env variables in the env file
               self.modify_env_value(self.internal_envfile_loc)
               
-              # reload the env variables
-              #load_dotenv(self.internal_envfile_loc) 
               # read variables into the textboxes in the dialog box              
               self.read_env_variables() 
               
               print("Environment variables saved.")
           
+              # emit
+              # https://stackoverflow.com/questions/68453805/how-to-pass-values-from-one-window-to-another-pyqt
+              self.submitClicked.emit( self.txt_working_dir.toPlainText())
+
           if error:
               print(err_message)
               QMessageBox.information(None, "DEBUG:", err_message)
@@ -261,9 +211,7 @@ class envvariables(QtWidgets.QDialog, FORM_CLASS):
        
         # Write the modified lines back to the .env file
         with open(env_file, 'w') as file:
-            file.writelines(modified_lines)
-
-        #print(f"The value of '{key}' in '{env_file}' has been modified to '{new_value}'.")
+            file.writelines(modified_lines)       
 
         file.close()
     
@@ -285,14 +233,4 @@ class envvariables(QtWidgets.QDialog, FORM_CLASS):
 
   def get_node_url(self):
     return self.NODE_URL
-
-  def showPlot(self):
-      #self.XX.load(QUrl(''))
-      pass
-
-
-  def greetings(self):
-      print("Hello {}")
-
-
   

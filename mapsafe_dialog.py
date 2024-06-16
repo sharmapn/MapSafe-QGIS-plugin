@@ -41,11 +41,6 @@ from qgis.core import QgsVectorLayer, QgsGeometry, QgsFeature, QgsProject
 from qgis.PyQt.QtWidgets import QAction, QApplication, QLabel, QComboBox, QFileDialog
 
 from qgis.PyQt.QtGui import *
-#from qgis.PyQt.QtWidgets import *
-
-# for swich button - https://github.com/yjg30737/pyqt-switch
-#from PyQt5.QtWidgets import QWidget, QFormLayout, QApplication, QLabel
-#from pyqt_switch import PyQtSwitch
 
 
 from pathlib import Path
@@ -73,7 +68,7 @@ from .algorithms import (
     CountPointsOnH3GridProcessingAlgorithm
 )
 
-from .protect_passphrase import ProtectPassphrase
+#from .protect_passphrase import ProtectPassphrase
 #public key encryption
 from .encryptRSA import PublicKeyEncryption
 # passphrase
@@ -146,16 +141,6 @@ main_hash_value_to_mint = ''
 from os import environ
 from dotenv import load_dotenv
 
-# #env_file = f'{self.plugin_dir}/.env'
-# load_dotenv("C:\\datasets\\.env")
-
-# from os import environ
-# from dotenv import load_dotenv
-
-#from dotenv import dotenv_values
-
-# start
-
 # for toggle
 from PyQt5.QtWidgets import QWidget, QFormLayout, QApplication, QLabel
 from pyqt_switch import PyQtSwitch
@@ -200,7 +185,7 @@ from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import * 
 from PyQt5.QtCore import * 
 
-# end
+
 
 # open window to save env variables
 from .envvariables import envvariables
@@ -209,6 +194,8 @@ FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'mapsafe_dialog_base.ui'))
 
 class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):  
+
+    
 
     # default masking parameter values
     minimum_distance = 0
@@ -229,20 +216,7 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
     public_key_for_encryption =''
     private_key_for_encryption =''
 
-    # # notarisation
-    # # 2. Add the Web3 provider logic here: 
-    # # https://eth-goerli.g.alchemy.com/v2/demo
-    # node_url = "https://rpc.ankr.com/eth_goerli"  # Goerli endpoint URL # https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161
-    # web3 = Web3(Web3.HTTPProvider(node_url))  # Change to correct network
-
-    # exception handling https://www.geeksforgeeks.org/python-exception-handling/
-    # x = 5
-    # y = "hello"
-    # try:
-    #     z = x + y
-    # except TypeError:
-    #     print("Error: cannot add an int and a str")
-
+    
     debug = ''
     min_resolution = 0
     max_resolution = 9
@@ -290,11 +264,7 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
     # selected file from devrypted tree
     selected_file_from_decrypted_tree = ""
 
-    # # https://ethereum.stackexchange.com/questions/46706/web3-py-how-to-use-abi-in-python-when-solc-doesnt-work
-    # with open("D:\\datasets\\abis\\Location.json") as f:
-    #     LocationNFT = json.load(f)
-    # abi = LocationNFT["abi"]
-    # #LocationNFT = require('./abis/Location.json')
+    # https://ethereum.stackexchange.com/questions/46706/web3-py-how-to-use-abi-in-python-when-solc-doesnt-work
 
     env_file_loc = ""
     #env_file_directory = ""
@@ -309,7 +279,6 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
 
     # environment variable class object
     env_var = None
-
 
     # if we want to verify and automatically display the map just after decryption
     to_verify_display = True
@@ -393,21 +362,13 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         #self.btn_use_pr.clicked.connect(self.mask_based_on_privacy_rating) #geomasking_function
         #self.btn_bin.clicked.connect(self.binning_function)
         self.btn_bin.clicked.connect(self.request_binning_function) # request_binning_function
-
-        #self.chkBox_privRating.connect(self.privacy_rating)
-
-        #self.btn_generateHash.clicked.connect(self.compute_hash)
-
+        
         #passphrase        
         self.btnGeneratePassphrase.clicked.connect(self.request_passphrase)
         self.btnENVFileDir.clicked.connect(self.set_env_file_location) #requestENVFileDirectory) #requestWorkingDirectory)
         
         
-        # TOOLTIPS
-        # individual or combined mode
-        # not a gui object, so set when initilaised 
-        #self.switch.setToolTip('Individual mode lets you use any of the security functions.' + 
-        #                       'The Combined mode guides and ensures these functions are executed in a workflow')
+        # TOOLTIPS        
 
         # env file
         self.btnENVFileDir.setToolTip('Essential parameters for this plugin to work.')
@@ -563,16 +524,12 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         self.env_var = envvariables(self)        
         print('loaded env variables from file: ' + str(self.internal_envfile_loc))
         
-        #self.env_file_loc = os.path.join(self.working_directory, '.env')
-        #load_dotenv(self.env_file_loc) #"D:\\datasets\\.env")
-       
+              
         # Read and set the Working directory
         wd = self.env_var.get_working_dir()
         self.set_working_directory(wd)
         
-        #DB_NAME = environ["WORKING_DIR"]
-        #print(DB_NAME)
-
+        
         self.btnEncrypt.setEnabled(False)
         self.encryption_next_pushButton.setEnabled(False)
         #self.btnEncrypt_passphrase.setEnabled(False)
@@ -608,14 +565,11 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         self.horizontalSlider_min.setRange(0, 500)  # changed from 500 to 100
         self.horizontalSlider_min.setValue(100)
         self.horizontalSlider_min.setSingleStep(5)
-        #self.horizontalSlider_min.setPageStep(10)
         self.horizontalSlider_min.valueChanged.connect(self.on_value_changed_min)
 
         self.horizontalSlider_max.setRange(0, 3000) # changed from 500 to 0
         self.horizontalSlider_max.setValue(500)
         self.horizontalSlider_max.setSingleStep(100)
-        #self.horizontalSlider_max.setPageStep(10)
-        #self.horizontalSlider_max.setTickPosition(QSlider.TickPosition.TicksAbove)
         self.horizontalSlider_max.valueChanged.connect(self.on_value_changed_max)
         self.label_min.setText('100') 
         self.label_max.setText('500') 
@@ -673,14 +627,7 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
 
         # binning
         self.btn_saved_binned_layers_loc.clicked.connect(self.open_binned_layer_location) # masked layer
-
-        # setting combined check box state to checked 
-        #self.checkBox_combined.setChecked(True) 
-
-        # connecting it to function 
-        # self.checkBox_combined.stateChanged.connect(self.set_combined) 
-        
-        #self.tabWidget_2 #self.tabs = tabWidget_2
+       
         # set the Safeguard tabs disabled
         self.tabWidget_2.setTabEnabled(1,False) #enable/disable the encryption tab
         self.tabWidget_2.setTabEnabled(2,False) #enable/disable the encryption tab
@@ -709,7 +656,6 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
 
         self.decrypt_next_pushButton.clicked.connect(self.change_verification_tab2)
         
-
         # hide the groupbox 
         self.separatefile_notarisation_groupBox.hide()
         self.label_osfile_to_notarise.hide()
@@ -793,15 +739,12 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         print(index)
         # only in individual mode and certain index level
         if(self.combined == False and index == 0):
-            #self.label_safeguard_options.setText("The original dataset can be anonymised, directly encrypted, or directly notarised.")
             self.label_safeguard_options.setText("The original dataset can be anonymised.")
             self.label_safeguard_options.show()
-        elif(self.combined == False and index == 1):
-            #self.label_safeguard_options.setText("The original or anonymised dataset can be saved, encrypted, or directly notarised.")
+        elif(self.combined == False and index == 1):          
             self.label_safeguard_options.setText("Any dataset can be encrypted: original or anonymised.")
             self.label_safeguard_options.show()
         elif(self.combined == False and index == 2):    
-            #self.label_safeguard_options.setText("The original, anonymised or encrypted dataset can be saved or notarised.")
             self.label_safeguard_options.setText("Any dataset can be notarised: original, anonymised or encrypted..")
             self.label_safeguard_options.show()
         #print("x2:", index * 2)
@@ -855,9 +798,7 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
             # making it multi line 
             self.label_safeguard_options.setWordWrap(True)    
             self.label_safeguard_options.setText("The original dataset can be anonymised, directly encrypted, or directly notarised.")
-            self.label_safeguard_options.show()
-            #self.label_anonymised.show()
-            #self.label_encrypted.show()                            
+            self.label_safeguard_options.show()                      
 
     def change_safeguarding_tab(self):
         self.tabWidget_2.setCurrentIndex(1)
@@ -894,18 +835,11 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
     # local file that contains the location of env file 
     # env file is contained in a text file named 'loc.txt' within the plugin directory
     def read_env_file_location(self): #, env_file_loc):
-        #parameter_file_loc = self.internal_file_loc # f'{self.plugin_dir}/loc.txt'
-        #print('read_env_file_location: ' + str(parameter_file_loc))
-
         try:
             if(self.internal_file_loc is None or self.internal_file_loc == ""):
                 print('Internal file containing ENV file location not supplied')
                 QMessageBox.information(None, "DEBUG:", 'Please specify location of file with ENV file location. ') 
-            else:    
-                # f = open(env_file_loc, "w")  # "demofile3.txt"
-                # f.write("Woops! I have deleted the content!")
-                # f.close()
-
+            else: 
                 #open and read the file after the overwriting:
                 f = open(self.internal_file_loc, "r") # "loc.txt"
                 env_file_loc = f.read()  # get the location of tyhe env file
@@ -917,11 +851,21 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
             QMessageBox.information(None, "DEBUG:", 'Exception reading env file . ') 
 
     # sets the location of the env file, overwriting whatever is there
-    def set_env_file_location(self): #, env_file_loc):
+    #  # <-- Here, we create *and connect* the sub window's signal to the main window's slot
+    def set_env_file_location(self): #, env_file_loc):  
         #internal_file_loc = f'{self.plugin_dir}/loc.txt'
-        self.env_var.show()
         
-        return
+        
+        # call the signal
+        # https://stackoverflow.com/questions/68453805/how-to-pass-values-from-one-window-to-another-pyqt
+        self.env_var.submitClicked.connect(self.on_sub_window_confirm)
+        self.env_var.show()
+
+        #return
+    
+    def on_sub_window_confirm(self, url):  # <-- This is the main window's slot
+        print(f"Saved Working dir : {url}")
+        self.label_working_dir.setText(str(url))
 
         # try:
         #     filepath = QFileDialog.getOpenFileName()
@@ -958,13 +902,10 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
             filepath = QFileDialog.getOpenFileName()
             filename = filepath[0] 
             if filename != "":
-                #self.label_osfile_first_level.setText( str(self.filename1) ) 
                 print(filename)
-                #'D:\\datasets\\passphrase.txt'
-                self.passphrase_file_to_encrypt = filename #open(filename).read()
+                self.passphrase_file_to_encrypt = filename 
                 print('self.passphrase_file_to_encrypt')
                 print(self.passphrase_file_to_encrypt)
-                #self.txt_passphrase.setText(self.passphrase)
                 self.passphrase_file_chosen = True
             else:
                 self.passphrase_file_chosen = False
@@ -980,13 +921,10 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
             filepath = QFileDialog.getOpenFileName()
             filename = filepath[0] 
             if filename != "":
-                #self.label_osfile_first_level.setText( str(self.filename1) ) 
                 print(filename)
-                #'D:\\datasets\\passphrase.txt'
                 self.public_key_for_encryption = open(filename).read()
                 print('self.public_key_for_encryption')
                 print(self.public_key_for_encryption)
-                #self.txt_passphrase.setText(self.passphrase)    
                 self.PKE.read_PubKey(filename)
                 self.public_key_chosen = True
             else:
@@ -1000,13 +938,7 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         except Exception as e:
             print(f'Error opening file as {e}')
 
-    # encrypt the passphrase, using the public key 
-    # def passphrase_encryption(self):
-    #     print('Passphrase Encryption')    
-    #     self.PKE.encrypt(self.passphrase_to_encrypt, self.public_key_for_encryption )
-
     def request_encrypt_passphrase(self):
-        #self.pub_key_enc = PublicKeyEncryption()
         pke = self.PKE.encrypt(self.working_directory, self.passphrase_file_to_encrypt, self.label_encrypted_passphrase, self.label_encrypted_passphrase_file)
         print('Calling encryption of passphrase')
 
@@ -1020,9 +952,7 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
             filepath = QFileDialog.getOpenFileName()
             filename_pp = filepath[0] 
             if filename_pp != "":
-                #self.label_osfile_first_level.setText( str(self.filename1) ) 
                 print('passphrase file: ' + str(filename_pp))
-                #'D:\\datasets\\passphrase.txt'
                 self.passphrase = open(filename_pp).read()
                 self.txt_passphrase.setText(self.passphrase)
             else:
@@ -1037,13 +967,10 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
             filepath = QFileDialog.getOpenFileName()
             filename_pp = filepath[0] 
             if filename_pp != "":
-                #self.label_osfile_first_level.setText( str(self.filename1) ) 
                 print('passphrase file: ' + str(filename_pp))
-                #'D:\\datasets\\passphrase.txt'  # ,encoding='utf-8', errors='ignore'
-                self.passphrase_to_decrypt_filename = filename_pp #open(filename).read()
+                self.passphrase_to_decrypt_filename = filename_pp 
                 print('self.passphrase_to_decrypt_filename')
                 print(self.passphrase_to_decrypt_filename)
-                #self.txt_passphrase.setText(self.passphrase)
                 self.encrypted_passphrase_file_chosen  = True
             else:
                 print("self.passphrase_to_decrypt_filename: " + str(self.passphrase_to_decrypt_filename))
@@ -1058,13 +985,10 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
             filepath = QFileDialog.getOpenFileName()
             filename_pk = filepath[0] 
             if filename_pk != "":
-                #self.label_osfile_first_level.setText( str(self.filename1) ) 
                 print('pk filename:' + str(filename_pk))
-                #'D:\\datasets\\passphrase.txt'
                 self.private_key_for_decryption = open(filename_pk).read()
                 print('self.private_key_for_encryption')
                 print(self.private_key_for_encryption)
-                #self.txt_passphrase.setText(self.passphrase) 
                 self.PKE.read_PriKey(filename_pk)
                 self.private_key_chosen = True
             else:
@@ -1105,10 +1029,8 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         try:
             filepath = QFileDialog.getOpenFileName()
             filename = filepath[0] 
-            #self.label_osfile_first_level.setText( str(self.filename1) ) 
             print(filename)
-            #'D:\\datasets\\passphrase.txt'
-            self.env_file_loc = filename #open(filename).read()
+            self.env_file_loc = filename 
             print('self.env_file_loc: ' + str(self.env_file_loc))
             self.env_file_path_set = True
             print('env_file_loc: ' + str(self.env_file_loc) + ' self.env_file_path_set ' + str(self.env_file_path_set))
@@ -1120,8 +1042,7 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
                 self.set_env_file_location(self.env_file_loc)
 
             #load the enviornment variable again from the env file
-            #self.env_file_loc = os.path.join(self.env_file_directory, '.env')
-            load_dotenv(self.env_file_loc) #"C:\\datasets\\.env")    
+            load_dotenv(self.env_file_loc)  
 
         except Exception as e:
             print(f"Error setting ENV file location+ {e}") 
@@ -1136,24 +1057,17 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         
     def request_passphrase(self):
         self.passph = Passphrase()
-        #self.passph.generate_passphrase()
-        #self.btnGeneratePassphrase.clicked.connect(self.generate_passphrase)
         pp = self.passph.generate_passphrase()
         if pp is not None:
             self.passphrase_generated = True
         # update class variable
         self.passphrase = str(pp)
-        print ('passphrase ' + self.passphrase)
-        #waterblue
-        #self.label_passphrase.setStyleSheet("background-color: #428BCA") 
-        #self.label_passphrase.setWordWrap(1)
+        print ('passphrase ' + self.passphrase)        
         self.label_passphrase.setStyleSheet("color: #AA336A")  #dark pink
         self.label_passphrase.setText( self.passphrase )
 
     def mask_based_on_privacy_rating(self):
         self.geomasking = GeoMasking()
-
-        
 
         layers = QgsProject.instance().mapLayers().values()
         layerName = None
@@ -1535,30 +1449,24 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         self.label_hash_val.setText("")
         self.label_encryption_time.setText("")
 
-        # check if 'working directory' is set
-        #self.working_directory_set = self.working_directory_set #self.chkBox_privRating_two_levels.isChecked()  
+        # check if 'working directory' is set      
         print ('Working Directory Set: ' + str(self.working_directory_set)) 
 
-        if (self.working_directory_set == False):    
-            ctypes.windll.user32.MessageBoxW(0, "Please set working directory!", "Working Directory", 1)
-            #easygui.msgbox("Please generate passphrase!", title="Passphrase")
+        if (self.working_directory_set == False):  
+            QMessageBox.information(None, "DEBUG:", 'Please set working directory! ')             
             return        
-
-        # self.btnEncrypt_passphrase.setEnabled(True)
+       
         self.btn_encrypt_passphrase.setEnabled(True)
 
-        if not self.label_osfile_first_level.text():            
-            ctypes.windll.user32.MessageBoxW(0, "Please choose OS file for First level!", "First level empty", 1)
-            #easygui.msgbox("Please generate passphrase!", title="Passphrase")
+        if not self.label_osfile_first_level.text():
+            QMessageBox.information(None, "DEBUG:", 'Please choose OS file for First level!. ')                     
             return
 
         # ensure passphrase
         if(self.passphrase_generated == False):            
-            ctypes.windll.user32.MessageBoxW(0, "Please generate passphrase!", "Passphrase", 1)
-            #easygui.msgbox("Please generate passphrase!", title="Passphrase")
+            QMessageBox.information(None, "DEBUG:", 'Please generate passphrase!. ')                      
             return
-        else:
-            #levels_to_encrypt = self.levels_to_encrypt            
+        else:                       
             self.encryption_decryption = EncryptionDecryption()
             
             print('\t\t----------------------------------------------------------')
@@ -1580,8 +1488,7 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
                                                     self.safeguard_progressBar)
             print('Calling os files')    
             # keep checking each level to finalise the level_to_encrypt 
-
-            #self.result_label.setText(f'You selected {rb.text()}')
+            
             filename = self.encryption_decryption.get_final_encrypted_volume_filename()
             hash_value = self.encryption_decryption.get_final_encrypted_volumes_hash_value()
 
@@ -1608,16 +1515,13 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
             #easygui.msgbox("Please generate passphrase!", title="Passphrase")
             return 
 
-        # first check if pasphrase provided
-        # txt_passphrase 
-        #self.passphrase = self.txt_passphrase.getText()
+        # first check if pasphrase provided       
         print ('passphrase ' + self.passphrase)
         
         if (self.encrypted_file_loaded == False):
             ctypes.windll.user32.MessageBoxW(0, "Please select an encrypted volume", "Select Ecrypted Volume", 1)
             return
-        
-        #self.level_to_decrypt = 1
+               
 
          # checking if it is checked 
         if (self.rbt_level1.isChecked()): 
@@ -1642,7 +1546,6 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         
         # enable the display tab 
         self.tabWidget_3.setTabEnabled(2, True) #enable/disable the display tab
-        # 
         self.clear_show_directory_structure()
     
     # we prepare the directory structure
@@ -1658,7 +1561,6 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         # let the tree load again
         self.load_project_structure(startpath, tree)
         self.verification_progressBar.setValue(100)     
-
 
     def display(self):
         print('display')
@@ -1724,7 +1626,6 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         return out
 
     def onItemClicked(self, it, col):
-        # print(it, col, it.text(col))
         try:            
             file = self.getItemFullPath(it)
             if file != "":
@@ -1734,8 +1635,7 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
                 file = file.replace("../content", filepath)                                    
                 self.selected_file_from_decrypted_tree = file #self.getItemFullPath(it)
                 print('self.selected_file_from_decrypted_tree: ' + self.selected_file_from_decrypted_tree)
-                # display on click
-                # self.display()
+                
         except Exception as e:
             print(f"Exception on item click {e}")
 
@@ -1751,25 +1651,20 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
             i -= 1
 
     def request_notarisation(self, env_var):
-        #self.label_tranx_url.setStyleSheet("color: #AA336A")  #dark pink
-        self.label_final_encrypted_volume_notarise.setStyleSheet("color: #AA336A")  #dark pink
-        
+        self.label_final_encrypted_volume_notarise.setStyleSheet("color: #AA336A")  #dark pink        
         self.notarisation = Notarisation(self.plugin_dir, self.env_var) #, self.working_directory)
         print('Calling minting function')
         nota_success = False # notarisation successfull
         
         try:
             if self.label_hash_value.text() is None or self.label_hash_value.text() == "":
-                #print("")
                 QMessageBox.information(None, "DEBUG:", 'No Hash Value provided for Notarisation on the Blockchain. ')
             else:
                 nota_success = self.notarisation.mint(self.main_hash_value_to_mint) # use global if this variable does not go through       
                 transx = self.notarisation.getTransaction()
                 print('nota_success: ' + str(nota_success))
         except Exception as e:
-            #print("Notarisation unsucessfull.")
             print(f"Exception while notarisation - {e}")
-            #print('Exception while notarisation')
             QMessageBox.information(None, "DEBUG:", 'Notarisation unsucessfull. ') 
                 
         if (nota_success == True):             
@@ -1779,7 +1674,7 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
             self.label_tranx.setHidden(False)
             self.label_tranx.setStyleSheet("color: #AA336A")  #dark pink 
             self.label_tranx.setText("Success")
-            
+
             self.label_tranx_url.setHidden(False) 
             self.label_tranx_url.setStyleSheet("color: #AA336A")  #dark pink
             self.label_tranx_url.setWordWrap(True)  # making it multi line        
@@ -1801,20 +1696,14 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
             print("Notarisation unsucessfull.")   
 
     def on_value_changed_min(self, val):
-        #global minimum_distance         # update global variable
         self.minimum_distance = val
-        self.label_min.setText( str(self.minimum_distance) )
-        # print('set minimum_distance: ' + str(self.minimum_distance))
-        # print(val)
+        self.label_min.setText( str(self.minimum_distance) )     
         # the default second level min is the double of this value
         self.text_minimum_offset.setPlainText(str(val*2))
 
-    def on_value_changed_max(self, val):
-        #global maximum_distance         # update global variable
+    def on_value_changed_max(self, val):        
         self.maximum_distance = val
-        self.label_max.setText( str(self.maximum_distance)  ) 
-        # print('set maximum_distance: ' + str(self.maximum_distance))
-        # print(val)
+        self.label_max.setText( str(self.maximum_distance)  )       
         # the default second level max is the double of this value
         self.text_maximum_offset.setPlainText(str(val*2))
 
@@ -1823,19 +1712,10 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         #hexabinning_resolution         # update global variable
         self.hexabinning_resolution = val
         self.label_resolution.setText( str(self.hexabinning_resolution)  ) 
-     
-    # def tabChanged_reloadlayers(index: int):
-    #     print(index)
-    #     self.get_layers() 
-    #     #print(self.qtabwidget.widget(index))
-    #     #print(self.qtabwidget.currentWidget())   
         
     def request_binning_function(self):
         print('hexabinning using uber h3')
-        # self.h3_algorithm = CreateH3GridInsidePolygonsProcessingAlgorithm()
-        # h2 = self.h3_algorithm.initAlgorithm()
-        # h3 = self.h3_algorithm.processAlgorithm()
-
+       
         # clear the saved file directpry
         self.label_binning_saved.setText('')        
 
@@ -1874,10 +1754,7 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
     # START BINNING
     # https://github.com/maphew/mhwcode/blob/1ef8338e20ff24ddbe741af225e556b9d81ec416/gis/qgis/h3-grid-from-layer.py    
     def binning_function(self):
-        # self.hextest = HexTest()
-        # ed = self.hextest.begin()
-        # er = self.hextest.run()        
-        print('binning function')
+        print('Binning function')
 
         self.debug = False
 
@@ -2076,7 +1953,7 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
                 self.label_passphrase_loc.setText("")
                 self.label_hash_val.setText("")
                 self.label_encryption_time.setText("")
-            print("\tXXself.levels_to_encrypt " + str(self.levels_to_encrypt)) 
+            print("\t self.levels_to_encrypt " + str(self.levels_to_encrypt)) 
         except Exception as e:
             print(f"GetOSFile_level2 Exception - {e}")  
             QMessageBox.information(None, "DEBUG:", 'Error Getting OSFile for level 2 ')
@@ -2103,7 +1980,6 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
                 self.label_hash_val.setText("")
                 self.label_encryption_time.setText("")
             print("\tXXself.levels_to_encrypt " + str(self.levels_to_encrypt))      
-            #return levels_to_encrypt
             #  IF USER DECIDES TO CHOOSE OS FILES , WE HAVE TO EMPTY THE LAYER COMBO BOX FOR EACH 
         except Exception as e:
             print(f"GetOSFile_level3 Exception - {e}") 
@@ -2124,15 +2000,13 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
                 self.encrypted_volume_filename = filepath
             
                 self.encryption_decryption = EncryptionDecryption()
-                #ed = self.encryption_decryption.decryption(1, self.passphrase, self.filename1, self.filename2, self.filename3)
                 hash_val = self.encryption_decryption.compute_hash_encrypted(self.filename, self.label_hash_value) # hash
                 self.main_hash_value_to_mint = str(filename_name) + "_" + str(hash_val)
-                #self.label_hash_val.setStyleSheet("color: #AA336A") 
                 self.label_final_encrypted_volume_notarise.setStyleSheet("color: #AA336A") 
                 self.lbl_hash_value.setStyleSheet("color: #AA336A")  #dark pink
                 self.lbl_hash_value.setText( hash_val )
             else:
-                self.label_final_encrypted_volume_notarise.setText( "") # just the filename
+                self.label_final_encrypted_volume_notarise.setText("") # just the filename
                 self.label_osfile_to_notarise.setText( "" )
             
         except Exception as e:
@@ -2143,12 +2017,9 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         try:
             filepath = QFileDialog.getOpenFileName()
             print('filepath[0] ' + str(filepath[0]))
-            #proceed = True
             self.encrypted_volume_filename = filepath[0] 
 
-            #if filepath[0] is None or filepath[0] == "":
             if self.encrypted_volume_filename != "":
-                #proceed = False
                 self.encrypted_file_loaded = True
                 self.label_encrypted_volume.setStyleSheet("color: #AA336A") 
                 self.label_encrypted_volume.setText( str(self.encrypted_volume_filename) ) 
