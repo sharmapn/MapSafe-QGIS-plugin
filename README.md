@@ -8,7 +8,7 @@ functions (geomasking or hexabinning, encryption, and notarization), along with 
 features, using their desktop application by themselves, eliminating reliance
 on a third party for dataset protection. 
 
-This plugin compliments the browser-based tool of the same name (<a href="[http://google.com/](https://mapsafe.xyz/)" target="_blank">MapSafe</a>) by accommodating masking and encryption of much larger datasets.
+This plugin compliments the browser-based tool of the same name (https://mapsafe.xyz/) by accommodating masking and encryption of much larger datasets.
 
 The plugin's homepage is at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/ where details of the safeguarding and verification processes are described.
 
