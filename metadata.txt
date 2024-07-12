@@ -28,7 +28,7 @@ repository=https://github.com/sharmapn/MapSafe-QGIS-plugin
 # Tags are comma separated with spaces allowed
 tags=privacy masking encryption notarisation
 
-homepage=https://github.com/sharmapn/MapSafe-QGIS-plugin
+homepage=https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin
 category=Vector
 icon=icon.png
 # experimental flag
