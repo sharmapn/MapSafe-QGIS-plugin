@@ -45,6 +45,8 @@ D:\QGIS>(python -m) pip install pyqt-switch
     In my machine, it was C:\Users/Pankaj/AppData/Roaming/QGIS/QGIS3\profiles\default/python/plugins\mapsafe/.env
     Or you can change the values from the "Set ENV values" button from the plugin's top right.
     
+Sample Dataset is in the 'datasets' directory.
+
 Full details are at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/gettingstarted.html
 
 Plugin version 1.0 and above can only be used in QGIS version 3. 
