@@ -8,13 +8,15 @@ functions (geomasking or hexabinning, encryption, and notarization), along with 
 features, using their desktop application by themselves, eliminating reliance
 on a third party for dataset protection. 
 
+The plugin's homepage is at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/ where each detail of the safeguarding and verification process is detailed.
+
 The plugins safeguarding and verification features are demonstrated in a 5-minute
 YouTube video (https://www.youtube.com/watch?v=gq4wX3kMTfE). 
 Please click on video image.
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/gq4wX3kMTfE/0.jpg)](https://www.youtube.com/watch?v=gq4wX3kMTfE)
 
-Each detail of the safeguarding and verification process is detailed in the help menu at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/
+
 
 
 **Getting started** 
