@@ -126,7 +126,7 @@ class envvariables(QtWidgets.QDialog, FORM_CLASS):
   def save_env_variables(self):
       
       self.plugin_dir = os.path.dirname(__file__)
-      self.internal_envfile_loc = f'{self.plugin_dir}/.env'        
+      self.internal_envfile_loc = f'{self.plugin_dir}/parameters.txt'        
       error = False
 
       self.BLOCKCHAIN_ADDRESS = self.txt_blockchain_addr.toPlainText() 
