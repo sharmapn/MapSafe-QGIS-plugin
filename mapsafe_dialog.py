@@ -516,7 +516,7 @@ class MapSafeDialog(QtWidgets.QDialog, FORM_CLASS):
         # print('env_file_loc: ' + env_file_loc)
 
         self.plugin_dir = os.path.dirname(__file__)
-        self.internal_envfile_loc = f'{self.plugin_dir}/.env' 
+        self.internal_envfile_loc = f'{self.plugin_dir}/parameters.txt' 
         print('self.internal_envfile_loc: ' + self.internal_envfile_loc)
         #load_dotenv(self.internal_envfile_loc ) #"D:\\datasets\\.env") #load_dotenv("D:\\datasets\\.env")
         
