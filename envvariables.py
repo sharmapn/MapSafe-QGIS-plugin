@@ -72,7 +72,7 @@ class envvariables(QtWidgets.QDialog, FORM_CLASS):
     self.btc_save.clicked.connect(self.save_env_variables)
 
     self.plugin_dir = os.path.dirname(__file__)
-    self.internal_envfile_loc = f'{self.plugin_dir}/.env'  
+    self.internal_envfile_loc = f'{self.plugin_dir}/parameters.txt'  
     print('self.internal_envfile_loc: ' + self.internal_envfile_loc)
 
     self.read_env_variables()
@@ -81,7 +81,7 @@ class envvariables(QtWidgets.QDialog, FORM_CLASS):
   def read_env_variables(self):
       print('read_env_variables(): ')
       self.plugin_dir = os.path.dirname(__file__)
-      self.internal_envfile_loc = f'{self.plugin_dir}/.env'  
+      self.internal_envfile_loc = f'{self.plugin_dir}/parameters.txt'  
       print('self.internal_envfile_loc: ' + self.internal_envfile_loc)
       
       try:   
