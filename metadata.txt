@@ -10,7 +10,7 @@
 name=MapSafe
 qgisMinimumVersion=3.0
 description=safeguard datasets using masking, encryption and notarisation
-version=1.0
+version=1.1
 author=Pankajeshwara Sharma
 email=pankajeshwara@gmail.com
 
