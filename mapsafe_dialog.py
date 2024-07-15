@@ -177,7 +177,7 @@ from qgis.core import (
 )
 from qgis import processing
 
-#from .utilities import singlepartGeometries
+from .singlepartGeo import singlepartGeometries
 
 
 from PyQt5.QtWidgets import * 
