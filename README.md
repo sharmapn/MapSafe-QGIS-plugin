@@ -26,9 +26,9 @@ Please click on video image.
 Installing Python and the required libraries
 
 1. Python can be installed using installer is at https://www.python.org/downloads/.
-    The required Python libraries can be installed via pip. To use pip in a Windows environment, one needs to run the OSGeo4W.bat from the 'D:\QGIS' directory (not from 'D\OSGEO4W').
+   Install dependencies: The required Python libraries can be installed via pip. To use pip in a Windows environment, one needs to run the OSGeo4W.bat from the 'D:\QGIS' directory (not from 'D\OSGEO4W').
+These commands need to be issued using the D:\QGIS\OSGEO.bat. Open OSGeo4W Shell installed with QGIS as Administrator and type:
 
-These commands need to be issued using the D:\QGIS\OSGEO.bat
 ```D:\QGIS>pip install cryptography
 D:\QGIS>pip install web3
 D:\QGIS>pip install python-dotenv
