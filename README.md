@@ -40,10 +40,10 @@ D:\QGIS>(python -m) pip install pyqt-switch
 
 2. Download the plugin zip file from the  https://github.com/sharmapn/MapSafe-QGIS-plugin
 3. Install plugin in QGIS
-4. There should be an .env file in the installed plugin directory.
-    You should change the parameters (especially the Working Directory) in this file directly by editing it. 
-    In my machine, it was C:\Users/Pankaj/AppData/Roaming/QGIS/QGIS3\profiles\default/python/plugins\mapsafe/.env
-    Or you can change the values from the "Set ENV values" button from the plugin's top right.
+4. There should be an parameter.txt file in the installed plugin directory.
+    You can change the values from the "Set ENV values" button from the plugin's top right.
+    Or you can also change the parameters (especially the Working Directory) in this file directly by editing it. 
+    In my machine, it was C:\Users/Pankaj/AppData/Roaming/QGIS/QGIS3\profiles\default/python/plugins\mapsafe/parameter.txt
     
 Sample Dataset is in the 'datasets' directory.
 
