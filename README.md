@@ -23,6 +23,8 @@ Please click on video image.
 
 **Getting started** 
 
+With version 1.3, the python libraries should be installed when the plugin is installed. A command prompt will be invoked whoch will install the libraries.
+
 Installing Python and the required libraries
 
 1. Python can be installed using installer is at https://www.python.org/downloads/.
@@ -40,12 +42,12 @@ D:\QGIS>(python -m) pip install pyqt-switch
 
 2. Download the plugin zip file from the  https://github.com/sharmapn/MapSafe-QGIS-plugin
 3. Install plugin in QGIS
-4. There should be an parameter.txt file in the installed plugin directory.
+4. The 'parameter.txt' file in the installed plugin directory contains the environment variables.
     You can change the values from the "Set ENV values" button from the plugin's top right.
-    Or you can also change the parameters (especially the Working Directory) in this file directly by editing it. 
+    Or you can also change the values (especially the Working Directory) in this file directly by editing it. 
     In my machine, it was C:\Users/Pankaj/AppData/Roaming/QGIS/QGIS3\profiles\default/python/plugins\mapsafe/parameter.txt
     
-Sample Dataset is in the 'datasets' directory.
+Note: A sample dataset is in the 'datasets' directory.
 
 Full details are at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/gettingstarted.html
 
