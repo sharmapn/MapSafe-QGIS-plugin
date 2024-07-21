@@ -33,6 +33,7 @@ from .resources import *
 # Import the code for the dialog
 from .mapsafe_dialog import MapSafeDialog
 
+from .settings import apply_settings
 
 class MapSafe:
     """QGIS Plugin Implementation."""
@@ -45,6 +46,10 @@ class MapSafe:
             application at run time.
         :type iface: QgsInterface
         """
+
+        # install libraries
+        apply_settings()
+
         # Save reference to the QGIS interface
         self.iface = iface
         # initialize plugin directory
