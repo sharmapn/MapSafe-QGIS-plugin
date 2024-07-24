@@ -2,6 +2,7 @@ import os
 from qgis.core import QgsSettings
 
 # D:\QGIS>pip install cryptography
+# D:\QGIS>pip install pycryptodome
 # D:\QGIS>pip install web3
 # D:\QGIS>pip install python-dotenv
 # D:\QGIS>pip install xkcdpass
