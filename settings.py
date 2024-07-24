@@ -28,6 +28,14 @@ def apply_settings():
         os.system("pip install -U "+ package)
         print('Installing package ' + package)
 
+    package = "pycryptodome"
+    try:
+        import pycryptodome
+    except:
+        print(f"--------------- INSTALLING {package} --------------------------------")
+        os.system("pip install -U "+ package)
+        print('Installing package ' + package)
+
     package = "python-dotenv"
     try:
         from dotenv import load_dotenv
