@@ -27,7 +27,8 @@ With version 1.3, the python libraries should be installed when the plugin is in
 
 Installing Python and the required libraries
 
-1. Python can be installed using installer is at https://www.python.org/downloads/.
+1. Python can be installed using installer is at https://www.python.org/downloads/. 
+
    **Please choose Python version 3.12.4** (https://www.python.org/downloads/release/python-3124/)
    Install dependencies: The following required Python libraries can be installed via pip. To use pip in a Windows environment, one needs to run the OSGeo4W.bat from the 'D:\QGIS' directory (not from 'D\OSGEO4W').
 These commands need to be issued using the D:\QGIS\OSGEO.bat. Open OSGeo4W Shell installed with QGIS as Administrator and type:
