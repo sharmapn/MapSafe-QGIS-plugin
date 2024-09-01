@@ -42,14 +42,17 @@ D:\QGIS>pip install easygui or python -m pip install easygui
 D:\QGIS>(python -m) pip install pyqt-switch
 ```
 
-2. Download the plugin zip file from the  https://github.com/sharmapn/MapSafe-QGIS-plugin
+2. Plugin can be installed directly from QGIS, through the QGIS plugins menu: "Plugins---Manage and Install Plugins". <br>
+Or you can download the plugin zip file from the  https://github.com/sharmapn/MapSafe-QGIS-plugin
 3. Install plugin in QGIS
 4. The 'parameter.txt' file in the installed plugin directory contains the environment variables.
     You can change the values from the "Set ENV values" button from the plugin's top right.
     Or you can also change the values (especially the Working Directory) in this file directly by editing it. 
     In my machine, it was C:\Users/Pankaj/AppData/Roaming/QGIS/QGIS3\profiles\default/python/plugins\mapsafe/parameter.txt
+
+Once the plugin and dependencies are installed, please reload using the 'Plugin Reloader' plugin in QGIS.
     
-Note: A sample dataset is in the 'datasets' directory.
+Note: A sample dataset is in this repository's 'datasets' directory.
 
 Full details are at https://sharmapn.github.io/MapSafeQGISGeoPrivPlugin/gettingstarted.html
 
