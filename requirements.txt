@@ -1,0 +1,11 @@
+cryptography
+easygui
+envs
+h3
+pycryptodome
+pyqt_switch
+PySide2
+python-dotenv
+tqdm
+web3
+xkcdpass
